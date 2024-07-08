@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+<!--로고, 검색 폼, {로그인, 회원가입 버튼}, {현재 로그인된 회원, 로그아웃 버튼}-->
+<header th:fragment="header">
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <!-- 로고 -->
+            <a class="navbar-brand" th:href="@{/}">The Board</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <div class="container d-flex justify-content-end">
+                    <!--비로그인 상태 버튼-->
+                    <div sec:authorize="isAnonymous()">
+                        <a class="btn btn-outline-success" href="/members/login" role="button">로그인</a>
+                        <a class="btn btn-outline-info" href="/members/join" role="button">회원가입</a>
+                    </div>
+
+                    <!--로그인 상태 버튼-->
+                    <div sec:authorize="isAuthenticated()">
+                        <!--현재 로그인 회원 정보 버튼-->
+                        <a class="btn btn-outline-info" th:text="${signedMember} + '님 환영합니다!'"
+                           th:href="@{/members/info}">username</a>
+
+                        <!--Logout Post 요청 Form-->
+                        <form id="logoutForm" th:action="@{/logout}" method="post" style="display: none"></form>
+                        <a class="btn btn-outline-danger" role="button"
+                           onclick="document.getElementById('logoutForm').submit(); return false;">로그아웃</a>
+                    </div>
+                </div>
+
+                <!--검색 폼-->
+                <form class="d-flex" th:action="@{/}" method="get" role="search">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search" name="keyword">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+            </div>
+
+        </div>
+    </nav>
+
+</header>
+
+</body>
+</html>
+
+
+
+

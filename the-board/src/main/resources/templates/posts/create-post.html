@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post Page</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="d-flex flex-column">
+<!--header-->
+<header class="header" th:replace="~{fragments/header :: header}"></header>
+
+<br><br>
+
+<!--Join Form-->
+<div class="container d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="col-12 col-md-6 col-lg-6 card">
+        <div class="card-body">
+            <h2 class="text-center">Create Post</h2>
+            <form th:action="@{/posts/new}" th:object="${postCreateForm}" method="post">
+
+                <div>
+                    <label for="post-title" class="form-label mt-4">Title</label>
+                    <input class="form-control" id="post-title" th:field="*{title}" type="text" required="">
+                    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red;"></div>
+                </div>
+
+                <div>
+                    <label for="post-content" class="form-label mt-4">Content</label>
+                    <textarea class="form-control" id="post-content" th:field="*{content}" rows="5" required=""></textarea>
+                    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color: red;"></div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Create Post</button>
+                </div>
+
+                <div th:if="${errorMessage}" style="color: red;">
+                    <p th:text="${errorMessage}">Error message here</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<footer class="footer" th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
