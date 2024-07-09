@@ -3,6 +3,7 @@ package com.project.the_board.controller;
 import com.project.the_board.dto.CommentRequestDto;
 import com.project.the_board.dto.MemberRequestDto;
 import com.project.the_board.dto.PostRequestDto;
+import com.project.the_board.entity.Comment;
 import com.project.the_board.repository.MemberRepository;
 import com.project.the_board.service.CommentService;
 import com.project.the_board.service.MemberService;
@@ -68,7 +69,7 @@ public class InitMember {
             requestDto2.setPhone("010-2222-2222");
             Long memberId2 = memberService.createMember(requestDto2);
 
-            for (int i = 1; i <= 85; i++) {
+            for (int i = 1; i <= 60; i++) {
 
                 if (i % 3 == 0) {
                     PostRequestDto dto = new PostRequestDto();
@@ -103,7 +104,37 @@ public class InitMember {
                 }
             }
 
+            /** 대댓글 테스트 데이터 **/
+            /*61 번째 게시글*/
+            PostRequestDto dto = new PostRequestDto();
+            dto.setTitle("comment children test");
+            dto.setContent("content");
+            dto.setMember(memberService.getMemberById(memberId2));
+            Long postId = postService.createPost(dto); /*61 번째 게시글*/
 
+            /*부모 댓글*/
+            CommentRequestDto dto1 = new CommentRequestDto();
+            dto1.setContent("parent comment");
+            dto1.setMember(memberService.getMemberById(memberId2));
+            dto1.setPost(postService.findPostById(postId));
+            Long parentCommentId = commentService.createComment(dto1);
+
+            /*자식 댓글 1*/
+            CommentRequestDto dto2 = new CommentRequestDto();
+            dto2.setContent("child1 comment");
+            dto2.setMember(memberService.getMemberById(memberId2));
+            dto2.setPost(postService.findPostById(postId));
+            Comment parentComment = commentService.findCommentById(parentCommentId);
+            dto2.setParent(parentComment);
+            commentService.createComment(dto2);
+
+            /*자식 댓글 2*/
+            CommentRequestDto dto3 = new CommentRequestDto();
+            dto3.setContent("child2 comment");
+            dto3.setMember(memberService.getMemberById(memberId2));
+            dto3.setPost(postService.findPostById(postId));
+            dto3.setParent(parentComment);
+            commentService.createComment(dto3);
         }
     }
 }

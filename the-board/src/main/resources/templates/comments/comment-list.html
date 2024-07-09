@@ -77,8 +77,33 @@
             <!--좋아요 수-->
             <p class="me-5"><em th:text="${comment.likes}">likes</em></p>
             <!--답글 버튼-->
-            <a class="btn btn-light btn-sm" role="button">답글</a>
+            <button class="btn btn-light btn-sm"
+                    th:data-id="${comment.id}"
+                    onclick="replyToComment(this.getAttribute('data-id'))">답글</button>
         </div>
+
+
+        <!-- 답글 작성 폼 (숨김 처리)
+         "/comments/{postId}/{parentId}/new" -->
+        <form th:id="'reply-comment-form-' + ${comment.id}" th:action="@{'/comments/' + ${postId} + '/' + ${comment.id} + '/new'}" method="post" style="display:none;">
+            <input type="hidden" name="parentId" th:value="${comment.id}">
+            <div class="d-flex justify-content-start">
+                <input type="text" th:name="childContent" placeholder="답글을 입력하세요" class="form-control" />
+                <button type="submit" class="btn btn-primary btn-sm">저장</button>
+                <button type="button" class="btn btn-secondary btn-sm"
+                        th:data-id="${comment.id}"
+                        onclick="cancelReply(this.getAttribute('data-id'))">취소</button>
+            </div>
+        </form>
+
+
+        <!-- 자식 댓글 목록 -->
+        <div th:each="childComment : ${comment.children}" class="child-comment">
+            <div th:replace="~{comments/child-comment-list :: child-comment-list}"></div>
+        </div>
+
+
+
         <hr>
     </div>
 
@@ -98,6 +123,16 @@
         // 수정 폼을 숨기고 댓글 내용을 다시 표시합니다.
         document.getElementById('comment-content-' + commentId).style.display = 'block';
         document.getElementById('edit-comment-form-' + commentId).style.display = 'none';
+    }
+
+    function replyToComment(commentId) {
+        // 답글 폼을 표시합니다.
+        document.getElementById('reply-comment-form-' + commentId).style.display = 'block';
+    }
+
+    function cancelReply(commentId) {
+        // 답글 폼을 숨깁니다.
+        document.getElementById('reply-comment-form-' + commentId).style.display = 'none';
     }
 
 </script>

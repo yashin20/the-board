@@ -5,12 +5,10 @@ import lombok.Data;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Data
-public class CommentResponseDto {
+public class ChildCommentDto {
 
     private Long id;
     private String content;
@@ -21,8 +19,6 @@ public class CommentResponseDto {
 
     //부모 댓글 ID
     private Long parentId;
-    //자식 댓글 리스트
-    private Page<ChildCommentDto> children = new PageImpl<>(Collections.emptyList()); // 빈 리스트로 초기화
 
     private Long memberId;
     private Long postId;
@@ -30,7 +26,7 @@ public class CommentResponseDto {
     private Boolean liked; //현재 로그인된 회원이 좋아요를 눌렀는가?
 
     /*Entity -> DTO*/
-    public CommentResponseDto(Comment comment) {
+    public ChildCommentDto(Comment comment) {
         this.id = comment.getId();
         this.content = comment.getContent();
         this.memberNickname = comment.getMember().getNickname();

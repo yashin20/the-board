@@ -1,9 +1,6 @@
 package com.project.the_board.controller;
 
-import com.project.the_board.dto.CommentRequestDto;
-import com.project.the_board.dto.CommentResponseDto;
-import com.project.the_board.dto.PostRequestDto;
-import com.project.the_board.dto.PostResponseDto;
+import com.project.the_board.dto.*;
 import com.project.the_board.entity.Comment;
 import com.project.the_board.entity.Member;
 import com.project.the_board.entity.Post;
@@ -12,6 +9,7 @@ import com.project.the_board.exception.DataNotFoundException;
 import com.project.the_board.exception.PasswordCheckFailedException;
 import com.project.the_board.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -85,7 +83,8 @@ public class PostController {
      */
     @GetMapping("/{postId}")
     public String postInfo(@PathVariable Long postId,
-                           @PageableDefault(sort = "id", size = 5, direction = Sort.Direction.DESC) Pageable pageable,
+                           @Qualifier("mainPageable") @PageableDefault(sort = "id", size = 5, direction = Sort.Direction.DESC) Pageable pageable,
+                           @Qualifier("childrenPageable") @PageableDefault(sort = "id", size = 5, direction = Sort.Direction.ASC) Pageable childrenPageable,
                            Model model) {
         /* Header.html - 현재 로그인된 회원 */
         Member currentMember = memberService.getCurrentMember();
@@ -105,12 +104,25 @@ public class PostController {
         model.addAttribute("createCommentForm", new CommentRequestDto());
 
         /* 댓글 목록 */
-        Page<Comment> commentList = commentService.findCommentList(postId, pageable);
-        Page<CommentResponseDto> list = commentList.map(comment -> {
+        Page<Comment> parentList = commentService.findParentList(postId, pageable);
+
+        Page<CommentResponseDto> list = parentList.map(comment -> {
             CommentResponseDto commentResponseDto = new CommentResponseDto(comment);
-            commentResponseDto.setLiked((commentLikesService.isLikedByMember(currentMember.getId(), comment.getId())));
+            //로그인 회원이 댓글에 좋아요를 눌렀는가?
+            commentResponseDto.setLiked(commentLikesService.isLikedByMember(currentMember.getId(), comment.getId()));
+
+            //댓글 -> 내림차순 정렬 / 대댓글 -> 오름차순 정렬
+            Page<Comment> childrenComment = commentService.findCommentListByParent(postId, commentResponseDto.getId(), childrenPageable);
+            Page<ChildCommentDto> children = childrenComment.map(child -> {
+                ChildCommentDto childCommentDto = new ChildCommentDto(child);
+                //로그인 회원이 댓글에 좋아요를 눌렀는가?
+                childCommentDto.setLiked(commentLikesService.isLikedByMember(currentMember.getId(), child.getId()));
+                return childCommentDto;
+            });
+            commentResponseDto.setChildren(children);
             return commentResponseDto;
         });
+
 
         model.addAttribute("comments", list); //comment dto list
         model.addAttribute("previous", pageable.previousOrFirst().getPageNumber()); //이전 페이지 정보

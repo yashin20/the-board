@@ -32,6 +32,12 @@ public class CommentService {
         /*1. create entity*/
         Comment comment = dto.toEntity();
 
+        /*if (부모 댓글이 있다면) - comment.parent 업데이트
+        * else - comment.parent = null 유지 */
+        if (dto.getParent() != null) {
+            comment.parentUpdate(dto.getParent());
+        }
+
         /*2. save entity*/
         Comment savedComment = commentRepository.save(comment);
 
@@ -55,6 +61,32 @@ public class CommentService {
 
         /* 2. comment list 조회 */
         return commentRepository.findByPost(post, pageable);
+    }
+
+    /* 부모 Comment List 조회
+     * Post ID + Parent Comment == null */
+    public Page<Comment> findParentList(Long postId, Pageable pageable) {
+        /* 1. 특정 Post 찾기 */
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new DataNotFoundException("존재하지 않는 게시글입니다."));
+
+        /* 2. comment list 조회 */
+        return commentRepository.findByPostAndParentIsNull(post, pageable);
+    }
+
+    /* 자식 Comment List 조회
+     * Post ID + Parent Comment ID */
+    public Page<Comment> findCommentListByParent(Long postId, Long parentId, Pageable pageable) {
+        /* 1. 특정 Post 찾기 */
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new DataNotFoundException("존재하지 않는 게시글입니다."));
+
+        /* 2. 부모 Comment 찾기 */
+        Comment parentComment = commentRepository.findById(parentId)
+                .orElseThrow(() -> new DataNotFoundException("존재하지 않는 댓글입니다."));
+
+        /* 3. comment list 조회 */
+        return commentRepository.findByPostAndParent(post, parentComment, pageable);
     }
 
 
@@ -85,13 +117,21 @@ public class CommentService {
         Comment comment = commentRepository.findById(id)
                 .orElseThrow(() -> new DataNotFoundException("존재하지 않는 댓글입니다."));
 
-        // '작성자 == 로그인 회원' 확인 절차
+        /*'작성자 == 로그인 회원' 확인 절차*/
         if (!isAuthorValidation(comment.getId())) {
             throw new UnauthorizedAccessException("잘못된 접근 - 현재 로그인 회원이 작성자와 일치하지 않습니다.");
         }
 
-        /*2. comment delete*/
-        commentRepository.delete(comment);
+        /*삭제 주체
+        * 1) 자식이 있는 부모 댓글 - isDeleted = true 로 변경 -> content -> "삭제된 댓글 입니다."
+        * 2) (Leaf Node) 자식 댓글, 자식이 없는 부모댓글 - 즉시 삭제*/
+        if (!comment.getChildren().isEmpty()) {
+            comment.changeIsDeleted(true); //isDeleted = true 로 변경
+            comment.changeContent("삭제된 댓글 입니다.");
+        } else {
+            /*2. comment delete*/
+            commentRepository.delete(comment);
+        }
 
         /*3. comment id return*/
         return id;

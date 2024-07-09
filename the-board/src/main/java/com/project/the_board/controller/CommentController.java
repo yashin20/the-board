@@ -40,10 +40,31 @@ public class CommentController {
 
         dto.setMember(memberService.getCurrentMember());
         dto.setPost(postService.findPostById(postId));
+
         commentService.createComment(dto);
 
         return "redirect:/posts/" + postId;
     }
+
+
+    /*자식 comment 저장 Post 요청
+     * "/comments/{postId}/{parentId}/new" */
+    @PostMapping("/{postId}/{parentId}/new")
+    public String saveParentComment(@PathVariable Long postId, @PathVariable Long parentId,
+                              @RequestParam String childContent) {
+
+        CommentRequestDto dto = new CommentRequestDto();
+        dto.setMember(memberService.getCurrentMember());
+        dto.setPost(postService.findPostById(postId));
+        dto.setParent(commentService.findCommentById(parentId));
+        dto.setContent(childContent);
+
+        commentService.createComment(dto);
+
+        return "redirect:/posts/" + postId;
+    }
+
+
 
     /*comment 수정 Post 요청
      * "/comments/{commentId}/update" */

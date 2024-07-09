@@ -22,6 +22,7 @@ public class CommentRequestDto {
     @NotBlank(groups = {CommentRequestDto.Create.class, CommentRequestDto.Update.class}, message = "Content 는 필수 입력 값 입니다.")
     private String content;
 
+    private Comment parent; //부모 댓글
     private Member member; //작성자
     private Post post; //소속 게시글
 
