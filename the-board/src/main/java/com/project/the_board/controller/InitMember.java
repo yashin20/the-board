@@ -114,27 +114,62 @@ public class InitMember {
 
             /*부모 댓글*/
             CommentRequestDto dto1 = new CommentRequestDto();
-            dto1.setContent("parent comment");
+            dto1.setContent("댓글 1 입니다.");
             dto1.setMember(memberService.getMemberById(memberId2));
             dto1.setPost(postService.findPostById(postId));
             Long parentCommentId = commentService.createComment(dto1);
 
+            Comment parentComment = commentService.findCommentById(parentCommentId);
+
             /*자식 댓글 1*/
             CommentRequestDto dto2 = new CommentRequestDto();
-            dto2.setContent("child1 comment");
+            dto2.setContent("대댓글 1 입니다.");
             dto2.setMember(memberService.getMemberById(memberId2));
             dto2.setPost(postService.findPostById(postId));
-            Comment parentComment = commentService.findCommentById(parentCommentId);
             dto2.setParent(parentComment);
             commentService.createComment(dto2);
 
             /*자식 댓글 2*/
             CommentRequestDto dto3 = new CommentRequestDto();
-            dto3.setContent("child2 comment");
+            dto3.setContent("대댓글 2 입니다.");
             dto3.setMember(memberService.getMemberById(memberId2));
             dto3.setPost(postService.findPostById(postId));
             dto3.setParent(parentComment);
             commentService.createComment(dto3);
+
+            /*자식 댓글 3*/
+            CommentRequestDto dto4 = new CommentRequestDto();
+            dto4.setContent("대댓글 3 입니다.");
+            dto4.setMember(memberService.getMemberById(memberId2));
+            dto4.setPost(postService.findPostById(postId));
+            dto4.setParent(parentComment);
+            commentService.createComment(dto4);
+
+
+            /*부모 댓글 2 (자식 1개)*/
+            CommentRequestDto dto5 = new CommentRequestDto();
+            dto5.setContent("댓글 2 입니다.");
+            dto5.setMember(memberService.getMemberById(memberId2));
+            dto5.setPost(postService.findPostById(postId));
+            Long parentCommentId2 = commentService.createComment(dto5);
+
+            Comment parentComment2 = commentService.findCommentById(parentCommentId2);
+
+            /*자식 댓글 1*/
+            CommentRequestDto dto6 = new CommentRequestDto();
+            dto6.setContent("대댓글 4 입니다.");
+            dto6.setMember(memberService.getMemberById(memberId2));
+            dto6.setPost(postService.findPostById(postId));
+            dto6.setParent(parentComment2);
+            commentService.createComment(dto6);
+
+
+            /*부모 댓글 3 (자식 X)*/
+            CommentRequestDto dto7 = new CommentRequestDto();
+            dto7.setContent("댓글 2 입니다.");
+            dto7.setMember(memberService.getMemberById(memberId2));
+            dto7.setPost(postService.findPostById(postId));
+            commentService.createComment(dto7);
         }
     }
 }
