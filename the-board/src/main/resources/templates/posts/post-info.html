@@ -90,6 +90,11 @@
             </div>
 
 
+            <!-- 아이콘 버튼 -->
+            <button id="shareButton" class="btn btn-outline-primary"><i class="bi bi-share"></i> 공유</button>
+            <p id="message"></p>
+
+
 
         </div> <!--"card-body"-->
 
@@ -158,6 +163,17 @@
         // 답글 폼을 숨깁니다.
         document.getElementById('reply-comment-form-' + commentId).style.display = 'none';
     }
+
+
+    document.getElementById('shareButton').addEventListener('click', function() {
+        const url = window.location.href;
+
+        navigator.clipboard.writeText(url).then(() => {
+            document.getElementById('message').innerText = 'URL이 복사되었습니다!';
+        }).catch(err => {
+            console.error('URL 복사 실패:', err);
+        });
+    });
 
 </script>
 
