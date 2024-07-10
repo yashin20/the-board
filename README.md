@@ -1,4 +1,4 @@
-# SpringBoot-Project-'the-board'
+![image](https://github.com/yashin20/the-board/assets/92693776/93463335-61f5-4380-8f70-66074f848ec8)# SpringBoot-Project-'the-board'
 
 
 
@@ -96,18 +96,31 @@
   
   
   
-   **1-1. 게시글 전체 목록 정렬**
+   **1-1. 게시글 전체 목록 정렬**  
+
+   'Sort' 드롭다운 버튼을 통해, 정렬 기준을 선택할 수 있다.
+   ![image](https://github.com/yashin20/the-board/assets/92693776/9d867928-bdd0-407e-a042-b52fc34fd039)  
+   "생성 일자 내림차순", "생성 일자 오름차순", "좋아요 내림차순", "좋아요 오름차순", "조회수 내림차순", "조회수 오름차순"  
+
+
 
    '조회수' 기준으로 내림차순 정렬  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/18250746-ccbb-4911-bcf1-f39d151f0f83)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/dedcbe33-2bbb-4826-b5f9-f8de28a4fbdc)  
 
+   '좋아요' 기준으로 내림차순 정렬  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/a8d725ab-3660-4169-8e20-c3caf1accd21)  
+
+   '생성일자' 기준으로 내림차순 정렬  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/f672c5cc-7afd-42e1-a813-a0969c909e66)  
+
+   ※ 오름차순은 모두 생략  
    ※ 로그인을 하지 않아도 게시글 정렬이 가능하다.  
 
 
 
    **2. 게시글 등록 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/67099714-c576-4029-8b68-552aa2a8ef5e)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/aee8e647-2a40-4de5-8521-254efc7f3a06)  
 
    로그인한 사용자만 게시글 작성이 가능하며, 작성 후 '게시' 버튼을 누르면 메인 페이지로 리다이렉트 된다.  
 
@@ -115,77 +128,50 @@
 
    **3. 게시글 상세 정보**
 
-   로그인 X  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/92b77621-66c2-4a46-83e7-e13552424ae3)  
-
-   ※ 로그인 하지 않은 경우, 게시글 상세 정보에 접근 가능하지만, '게시글 설정' 옵션에 접근할 수 없다.  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/701e27d3-2beb-4322-be38-1a2dc56dd4cd)  
 
 
    작성자 계정이 아닌 다른 계정으로 로그인 O  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/bef81a23-7918-4817-a5b6-b0dc5515f885)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/f97d3d0c-6639-4279-99c1-a9d38c2eb2bb)  
 
-   ※ 작성자 계정이 아닌 다른 계정으로 로그인한 경우, '게시글 설정' 옵션에 접근 가능하지만, '게시글 작성' 기능만 접근 가능하다.  
+   ※ 작성자 계정이 아닌 다른 계정으로 로그인한 경우, 
+     '게시글 수정하기', '게시글 삭제하기' 버튼이 보이지 않는다.  
 
 
    작성자 계정으로 로그인 O  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/15f21e93-5271-447d-b708-f7aa6e0feff0)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/fe1ded97-2f5d-490a-8dff-7b4b06d748e6)  
 
-   ※ 작성자 계정으로 로그인 한 경우, '게시글 수정' 과 '게시글 삭제' 를 할 수 있다.  
+   ※ 작성자 계정으로 로그인 한 경우, '게시글 수정하기' 와 '게시글 삭제하기' 버튼을 통해 수정/삭제 를 할 수 있다.  
 
 
 
    **4. 게시글 수정 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/2ecc1243-4c45-4f2f-9b42-4af5f6e7e914)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/aadd3f4f-8176-45e1-9df3-bbb22304492d)  
 
-   게시글 수정 후, '게시' 버튼을 눌러 수정을 마무리한다.    
-   '게시' 버튼을 누르면 게시글 목록으로 이동한다.  
+   게시글 수정 후, 'Save Post' 버튼을 눌러 수정을 마무리한다.    
+   'Save Post' 버튼을 누르면 수정한 게시글 상세 정보 페이지로 이동한다.  
 
    [수정된 게시글 화면]  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/c828dff6-270e-4b36-a597-85969a196c0c)  
-   
+   ![image](https://github.com/yashin20/the-board/assets/92693776/95dca49d-54ad-47f0-98e2-cd32023e097c)  
+
    
 
    **5. 게시글 삭제 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/816ef173-4759-4456-b8b5-1ad39da2f7bb)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/d8273e78-0af3-4334-9760-004e823a188d)  
 
    '게시글 삭제' 버튼을 눌러 삭제를 진행한다.  
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/08081d6f-d02c-4c06-9a42-d1c9d963d53d)  
-
-   '게시글 번호'를 포함한 삭제 완료 안내 메시지가 등장한다.
-
-   [게시글 목록]  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/440f7a24-f7f1-4178-b6da-94319eda0f34)  
-
-   게시글이 삭제 된 것을 볼 수 있다.
 
 
    **6. 게시글 검색 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/6b0fdefb-da6a-4dc7-9220-14c441fbb801)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/6b4607c1-202f-4615-9d1e-e5e6a9e430ea)  
 
+   검색 키워드 : '9' 를 통해 검색한 결과이다. 
+   제목(title) 에 '9'가 포함된 게시글 목록을 확인할 수 있다.
 
-
-  **6-1. 게시글 검색 후 페이징 화면**
-
-  ['by' 키워드로 검색한 화면]  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/bbd81c39-1be6-45da-a29c-a9431b2a07ca)  
-
-  ['by' 키워드로 검색 내용 中 사용자 기준 4페이지]  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/c56913a8-1e71-4927-a828-27cf637fc195)  
-
-
-
-  **6-2. 게시글 검색 후 페이징 + 정렬**
-
-  ['by' 키워드로 검색 내용 && 조회수 기준 내림차순 정렬]  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/79fef79f-8ff0-4c39-99ac-2677d557079b)  
-
-
-  ['by' 키워드로 검색 내용 && 조회수 기준 내림차순 정렬 中 사용자 기준 1페이지]  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/d346d15f-fe23-401e-a321-e79a19fa6537)   
     
   </details>
 
@@ -195,10 +181,10 @@
 
    **1. 회원가입 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/fe32e1bc-cfeb-4c2b-9bc2-7ac7a2af3fea)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/ef165550-deb9-43bd-b1dd-3a51f6e5c183)  
 
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/f7f03b03-c0d4-4526-a495-2cdcb6e0ff46)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/12ae4e8c-4a87-4a5d-b3e7-c3d82614d814)  
 
    ※ 회원가입 양식에 대한 경고 메시지 표시  
 
@@ -206,33 +192,28 @@
 
    **2. 로그인 화면**
 
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/70aeecdb-783d-4469-b23a-b1b814896db5)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/c2d9d390-e71a-4b5d-a04b-6d8b0ab1d19a)  
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/4fbcce4a-2e85-475c-8f0d-76c59064a72b)  
 
    ※ 로그인 실패에 대한 경고 메시지 표시  
 
 
+   **3. 회원정보 화면**  
 
-   **3. 회원정보 수정 화면**
-
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/49fd5a13-5ff2-4ee5-96b1-8fef64824af3)  
-   로그인 된 username 을 입력하여, 회원정보 화면으로 이동  
-
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/1ffe8588-1a0d-4b49-8bb8-15a53608835e)  
-
+   ![image](https://github.com/yashin20/the-board/assets/92693776/803b7248-3fab-4ebe-ab56-eb9cefae4774)  
   
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/db057e23-35ee-4f4b-afcb-333b7dcc2956)  
-   변경하려는 닉네임에 대한 중복 체크    
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/8e879869-e2e9-4503-8ff2-80213486f736)  
-   변경하려는 비밀번호에 대한 유효성 체크    
 
+   **4. 회원정보 수정 화면**
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/fc09e9d0-0229-4521-8053-279d95f00273)  
+   'Nickname' , 'Email' , 'Phone' 에 대해 회원정보 수정을 진행한다. 
 
 
    **4. 회원 탈퇴**
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/86e4f872-27d0-4d94-a470-5e5ad86565dd)  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/109b6351-9b3c-4f57-a1eb-26bc5373da76)  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/e0a6d5a1-82f8-41b2-bbde-ae1eeaeb9f09)  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/4c0256eb-f88f-46fe-ba55-a21167f3486b)  
    회원 탈퇴 처리 후, 메인 페이지로 리다이렉션, 로그아웃 처리가 된다.    
-   또한, 탈퇴한 회원이 작성한 게시글 / 댓글의 작성자는 'unknown' 으로 표기된다.  
+   또한, 탈퇴한 회원이 작성한 게시글 / 댓글은 함께 삭제된다. 
 
     
   </details>
