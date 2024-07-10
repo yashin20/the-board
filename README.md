@@ -84,11 +84,15 @@
     
    **1. 게시글 전체 목록 ("/")**
 
-   로그인 X 화면  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/5547af49-7724-4aeb-979f-7a6ad2590bdd)  
+   [로그인 X 화면]  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/3f5612a2-df74-4baa-ad87-79cd2feaccc0)  
+   상단 네이게이션 바에 '로그인' , '회원가입' 버튼이 보이는 것을 볼 수 있다.  
+ 
 
-   로그인 O 화면  
-   ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/0871872a-720b-445f-bfe3-2055b252bd2e)  
+   [로그인 O 화면]  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/e80a1840-6e80-4acd-9ce2-e948d3d2c1e4)  
+   상단 네이게이션 바에 '[회원 닉네임]님 환영합니다!' , '로그아웃' 버튼이 보이는 것을 볼 수 있다.  
+  
 
 
 
