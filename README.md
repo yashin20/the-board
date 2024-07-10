@@ -225,29 +225,23 @@
   **1. 댓글 작성 화면**
   
   로그인 X - 댓글 작성 화면  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/9cf7227a-1bc9-47d5-b173-bdebc02a7d64)  
-
+  
   로그인 O - 댓글 작성 화면  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/97112208-bde3-474e-8283-f1195d8ceea1)  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/d771292d-46c4-461b-8c18-a5f929166c88)  
-
+  
 
   **2. 댓글 수정**
 
   로그인 X  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/3f198fc2-6e9e-46f5-a6e1-898147562efe)  
-
+ 
 
   작성자 != 로그인 회원 - 로그인 O  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/a0ee73f7-912f-4561-acfe-ec125d0eb977)  
-
+  
   작성자 == 로그인 회원 - 로그인 O  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/7e5fc904-1300-46c1-b3c0-ab732fb893b3)  
+  
+  
   작성자 본인이 로그인 한 상태에서만 댓글 수정 / 삭제 에 접근 가능하다.  
 
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/4f4107bf-e01b-480f-832e-7149459ad179)  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/c2cf7c26-9a62-4183-9928-785486321a8a)  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/b08c429d-fa29-40c6-8a82-8647bd790f21)  
+  
 
   댓글이 수정된 모습과 '작성일자' 뒤에 '(수정됨)' 표식이 생긴 것을 볼 수 있다.  
 
@@ -255,10 +249,9 @@
 
   **3. 댓글 삭제**
 
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/c2c1e45a-1990-4a82-98d7-e4414d202543)  
+  
   '댓글 2번!' 을 삭제 한다.    
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/2ddb34c3-fd21-467b-b7a1-a452fcbb9b61)  
-  ![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/2dbb7acc-c455-48f4-bbd5-30a108e4941f)  
+  
   '댓글 2번!' 이 삭제 된 모습을 볼 수 있다.
 
     
@@ -373,29 +366,12 @@
 
 ### 2-2. DB 설계
 
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/34bac54a-31d9-458a-83e3-33ca74f29413)
-
-**MEMBER TABLE**   
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/688dd71e-b194-41d7-8366-5634e666f748)  
-
-**POST TABLE**  
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/e56c4f17-526d-4c94-92b3-14cb63b0aee3)  
-
-**COMMENT TABLE**  
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/422d6e53-7c6c-4d22-bc08-fd9febfa44a6)  
 
 
 
 ### 2-3. API 설계
 
-**Post 관련 API**  
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/04184267-86fe-41fd-af99-a6772c85633a)  
-  
-**Member 관련 API**  
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/22b3ae7b-34c0-4746-86cc-bdf8feadf447)  
-  
-**Comment 관련 API**  
-![image](https://github.com/yashin20/BoardServiceV2/assets/92693776/bc8aa6de-89c6-4e65-97a5-374b5d8df839)  
+
   
 
 
