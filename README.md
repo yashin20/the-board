@@ -26,8 +26,11 @@
 
 ## 1. 프로젝트 소개
 
+
 ### 1-1. 프로젝트 소개
 
+기존 게시판 프로젝트에 다양한 기능을 넣지 못해 굉장히 아쉬움이 있었다.
+또한, 단순히 기능 구현 만이 목표였기 때문에, 체계적으로 코드를 구성하지 못한 것에도 역시 많은 아쉬움이 남았기에 다시한번 게시판 프로젝트를 진행하게 되었다.
 
 ### 1-2. 프로젝트 기능
 
@@ -35,9 +38,11 @@
 
 게시판  
 - 게시글 CRUD 기능
-- 게시글 정렬 기능 (조회수, 작성일자)
+- 게시글 정렬 기능 ('조회수', '작성일자', '좋아요' 오름 / 내림 차순)
 - 게시글 페이징
 - 게시글 검색 기능
+- 게시글 좋아요 기능
+- 게시글 공유 기능(URL 복사)
 
 사용자
  - Security 회원가입 및 로그인 기능
@@ -55,7 +60,7 @@
 
 #### Back-end
  - Java 21
- - SpringBoot 3.2.4
+ - SpringBoot 3.2.7
  - JPA(Spring Data JPA)
  - Spring Security
 
@@ -69,7 +74,7 @@
  - html/css
  - JavaScript
  - Thymeleaf
- - Bootstrap 5.3.2
+ - Bootstrap 5.3.3
 
 
 ### 1-4. 실행 화면
@@ -286,9 +291,94 @@
 <summary>패키지 구조 보기</summary>
 
 ```
-
-
-
+📦src
+ ┣ 📂main
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂project
+ ┃ ┃ ┃ ┃ ┗ 📂the_board
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CustomUserDetailsServiceAuthorities.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WebSecurityConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentLikesController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HomeController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InitMember.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikesController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostController.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ChildCommentDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BaseEntity.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Comment.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentLikes.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Likes.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Member.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRole.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Post.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DataAlreadyExistsException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DataNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GlobalExceptionHandler.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordCheckFailedException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UnauthorizedAccessException.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentLikesRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikesRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentLikesService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CommentService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikesService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜PostService.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜TheBoardApplication.java
+ ┃ ┗ 📂resources
+ ┃ ┃ ┣ 📂static
+ ┃ ┃ ┃ ┣ 📂css
+ ┃ ┃ ┃ ┃ ┗ 📜bootstrap.min.css
+ ┃ ┃ ┃ ┗ 📂img
+ ┃ ┃ ┃ ┃ ┣ 📜empty_heart.png
+ ┃ ┃ ┃ ┃ ┗ 📜full_heart.png
+ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┃ ┣ 📂comments
+ ┃ ┃ ┃ ┃ ┣ 📜child-comment-list.html
+ ┃ ┃ ┃ ┃ ┣ 📜comment-list.html
+ ┃ ┃ ┃ ┃ ┗ 📜create-comment-form.html
+ ┃ ┃ ┃ ┣ 📂fragments
+ ┃ ┃ ┃ ┃ ┣ 📜footer.html
+ ┃ ┃ ┃ ┃ ┣ 📜header.html
+ ┃ ┃ ┃ ┃ ┗ 📜pagination.html
+ ┃ ┃ ┃ ┣ 📂members
+ ┃ ┃ ┃ ┃ ┣ 📜info-update.html
+ ┃ ┃ ┃ ┃ ┣ 📜info.html
+ ┃ ┃ ┃ ┃ ┣ 📜join.html
+ ┃ ┃ ┃ ┃ ┣ 📜login.html
+ ┃ ┃ ┃ ┃ ┗ 📜password-update.html
+ ┃ ┃ ┃ ┣ 📂posts
+ ┃ ┃ ┃ ┃ ┣ 📜create-post.html
+ ┃ ┃ ┃ ┃ ┣ 📜member-post-list.html
+ ┃ ┃ ┃ ┃ ┣ 📜post-info.html
+ ┃ ┃ ┃ ┃ ┗ 📜update-post.html
+ ┃ ┃ ┃ ┗ 📜index.html
+ ┃ ┃ ┣ 📜application-oauth.yml
+ ┃ ┃ ┗ 📜application.yml
+ ┗ 📂test
+ ┃ ┗ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂project
+ ┃ ┃ ┃ ┃ ┗ 📂the_board
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜TheBoardApplicationTests.java
 ```
 
 
@@ -327,10 +417,9 @@
 
 ## 개발 내용
 
-- <a href="https://notorious.tistory.com/340" target="_blank">게시글 페이징 처리 구현</a>
-- <a href="https://notorious.tistory.com/341" target="_blank">게시글 키워드 검색 + 정렬 + 페이징 기능 구현</a>
-- <a href="https://notorious.tistory.com/342" target="_blank">회원 탈퇴시, 게시글 / 댓글 처리</a>
-
+ - <a href="https://notorious.tistory.com/352" target="_blank">[The Board] The Board 프로젝트 환경 설정 + 프로젝트 선정 이유</a>
+ - <a href="https://notorious.tistory.com/354" target="_blank">[The Board] 게시글 댓글 좋아요 기능 구현하기</a>
+ - <a href="https://notorious.tistory.com/355" target="_blank">[The Board] 댓글 / 대댓글 기능 구현 (생성, 수정 삭제)</a>
 
 
 ## 마무리
@@ -341,7 +430,7 @@
 
 
 ### 2. 프로젝트 과정에서 발생한 문제
-- <a href="https://notorious.tistory.com/339" target="_blank">Spring Security 가 비로그인 상태에서 static rescoure 접근을 제한</a>
+- <a href="https://notorious.tistory.com/353" target="_blank">[The Board - MySQL Error] org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL 해결방법</a>
 
 
 ### 3. 후기
