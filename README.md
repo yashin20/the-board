@@ -46,7 +46,7 @@
 
 사용자
  - Security 회원가입 및 로그인 기능
- - 회원 정보 수정
+ - 회원 정보 수정 ('Nickname', 'Phone', 'Email', 'Password')
  - 회원 탈퇴
  - 유효성 및 중복 검사
 
@@ -206,8 +206,29 @@
 
    **4. 회원정보 수정 화면**
 
-   ![image](https://github.com/yashin20/the-board/assets/92693776/fc09e9d0-0229-4521-8053-279d95f00273)  
+   **4-1. 회원정보 수정 화면 ('Nickname', 'Email', 'Phone')**
+   ![image](https://github.com/yashin20/the-board/assets/92693776/37deb847-094f-483d-aab1-a0d246260d99)  
+   '회원 정보 수정' 버튼을 통해, 회원정보 수정 화면('Nickname', 'Email', 'Phone') 으로 이동한다.
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/ccd236d8-1070-47ce-a20b-657901981512)  
    'Nickname' , 'Email' , 'Phone' 에 대해 회원정보 수정을 진행한다. 
+   '수정사항 저장' 버튼을 눌러 회원정보 수정을 완료한다.  
+   회원정보 페이지로 리다이렉트 된다.  
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/d9b07cc2-cd60-4d35-80bd-7d1961dc5565)  
+   수정된 회원정보를 확인할 수 있다.   
+
+
+   **4-2. 회원정보 수정 화면 ('Password')**  
+   ![image](https://github.com/yashin20/the-board/assets/92693776/cfa97d8f-6606-42e9-8898-39f2a5aef24e)  
+   회원 정보 수정' 버튼을 통해, 회원정보 수정 화면('Password') 으로 이동한다.  
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/55b2086b-d94b-45b8-9a42-47a0c046ec91)  
+   비밀번호 수정화면에서 비밀번호 수정을 진행한다.
+
+   ![image](https://github.com/yashin20/the-board/assets/92693776/5c5168ef-bf1f-45a8-87f2-2083a83e86ad)  
+   '비밀번호 수정' 버튼을 통해 비밀번호 수정을 완료한다.  
+   회원정보 페이지로 리다이렉트 한다.  
 
 
    **4. 회원 탈퇴**
@@ -224,35 +245,49 @@
 
   **1. 댓글 작성 화면**
   
-  로그인 X - 댓글 작성 화면  
-  
-  로그인 O - 댓글 작성 화면  
+  ![image](https://github.com/yashin20/the-board/assets/92693776/ae6b4c83-f2ca-4d18-90ec-7c95355cf72e)  
+  댓글 작성 화면  
+
+  ![image](https://github.com/yashin20/the-board/assets/92693776/3728cdac-c238-43ff-937c-7ad98614b2c4)  
+  'new Comment' 내용의 댓글을 작성된 것을 확인할 수 있다.  
   
 
   **2. 댓글 수정**
 
-  로그인 X  
- 
-
   작성자 != 로그인 회원 - 로그인 O  
+  ![image](https://github.com/yashin20/the-board/assets/92693776/f7337443-dfb8-4cce-9d6d-0099668688ca)  
+  댓글에 수정 / 삭제에 접근 가능한 드롭다운 버튼이 보이지 않는다.  
   
   작성자 == 로그인 회원 - 로그인 O  
-  
+  ![image](https://github.com/yashin20/the-board/assets/92693776/257456e6-a420-4f3b-bd57-a899f35bc52d)  
+  댓글에 수정 / 삭제에 접근 가능한 드롭다운 버튼이 보인다.  
   
   작성자 본인이 로그인 한 상태에서만 댓글 수정 / 삭제 에 접근 가능하다.  
 
-  
+  ![image](https://github.com/yashin20/the-board/assets/92693776/3be967e3-c892-44fd-b661-b7d2eb934c60)  
+  드롭다운 버튼을 눌러 'Update' 를 클릭하여, 수정을 진행한다.  
+  수정 내용 작성 후, 저장을 눌러 수정을 완료한다.  
 
-  댓글이 수정된 모습과 '작성일자' 뒤에 '(수정됨)' 표식이 생긴 것을 볼 수 있다.  
-
+  ![image](https://github.com/yashin20/the-board/assets/92693776/f1020f6a-e2cd-49e2-8a1a-2c17f1b24c8c)  
+  수정된 댓글을 확인할 수 있다.  
 
 
   **3. 댓글 삭제**
 
-  
-  '댓글 2번!' 을 삭제 한다.    
-  
-  '댓글 2번!' 이 삭제 된 모습을 볼 수 있다.
+  ![image](https://github.com/yashin20/the-board/assets/92693776/f07bcba4-9002-4d23-904a-870dffb3370a)  
+  'Delete' 를 클릭하여, 댓글 삭제를 진행한다.  
+
+  ![image](https://github.com/yashin20/the-board/assets/92693776/370788be-aeb9-43a1-966c-e66bc75e6023)  
+  삭제된 것을 확인할 수 있다.  
+
+
+  **4. 댓글 좋아요 기능**  
+  ![image](https://github.com/yashin20/the-board/assets/92693776/bd01699a-936d-4355-b841-ba1247eed074)  
+  좋아요를 누른 모습이다.  
+  중복으로 누를 수는 없다. 
+
+  ![image](https://github.com/yashin20/the-board/assets/92693776/32591b6e-c339-4244-bdc6-03a420108b88)  
+  이미 좋아요가 눌러진 상태에서 좋아요를 다시 클릭하면 좋아요가 취소된다.  
 
     
   </details>
