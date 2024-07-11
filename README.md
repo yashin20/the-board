@@ -1,5 +1,5 @@
-![image](https://github.com/yashin20/the-board/assets/92693776/93463335-61f5-4380-8f70-66074f848ec8)# SpringBoot-Project-'the-board'
-
+# SpringBoot-Project-'the-board'  
+![image](https://github.com/yashin20/the-board/assets/92693776/93463335-61f5-4380-8f70-66074f848ec8)
 
 
 ## 목차
