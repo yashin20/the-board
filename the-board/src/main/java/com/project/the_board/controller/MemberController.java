@@ -85,8 +85,6 @@ public class MemberController {
 
     /**
      * 회원 수정(Update)
-     * 1. 회원 정보 수정 (nickname, email, phone) - "/members/info/update"
-     * 2. 비밀번호 수정 (password) - "/members/pw-update"
      */
     /**
      * 1. 회원 정보 수정 (nickname, email, phone) - "/members/info/update"

@@ -37,6 +37,12 @@ public class PostController {
      */
     @GetMapping("/new")
     public String createPostForm(Model model) {
+        //현재 로그인된 Member
+        Member currentMember = memberService.getCurrentMember();
+        //현재 로그인된 Username
+        model.addAttribute("signedMember", currentMember.getUsername());
+
+
         //post 작성 폼
         model.addAttribute("postCreateForm", new PostRequestDto());
 
@@ -150,6 +156,11 @@ public class PostController {
      */
     @GetMapping("/{postId}/update")
     public String postUpdateForm(@PathVariable Long postId, Model model) {
+        //현재 로그인된 Member
+        Member currentMember = memberService.getCurrentMember();
+        //현재 로그인된 Username
+        model.addAttribute("signedMember", currentMember.getUsername());
+
         Post post = postService.findPostById(postId);
         model.addAttribute("postUpdateForm", new PostRequestDto(post.getId(), post.getTitle(), post.getContent()));
         return "posts/update-post";

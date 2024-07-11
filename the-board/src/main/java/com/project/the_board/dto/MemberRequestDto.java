@@ -20,11 +20,9 @@ public class MemberRequestDto {
     /*비밀번호 업데이트 : id, currentPassword, password, passwordCheck */
     public interface UpdatePw {}
 
-    /*회원 조회, 회원 삭제 : id */
-    public interface IdOnly {}
 
 
-    @NotNull(groups = {Update.class, UpdatePw.class, IdOnly.class}, message = "ID는 필수 입력 값입니다.")
+    @NotNull(groups = {Update.class, UpdatePw.class}, message = "ID는 필수 입력 값입니다.")
     private Long id;
 
     @Pattern(regexp = "^[a-zA-Z0-9]{4,20}$", groups = Create.class,

@@ -79,7 +79,8 @@ public class MemberService {
      */
     @Transactional
     public Member updateMember(MemberRequestDto dto) {
-        //dto 구성요소 : id, currentPassword, password, passwordCheck
+        /*회원정보 업데이트 (Update.class) : id, nickname, email, phone */
+        /*비밀번호 업데이트 (UpdatePw.class) : id, currentPassword, password, passwordCheck */
 
         /*수정대상 member*/
         Member member = getMemberById(dto.getId());
@@ -91,6 +92,7 @@ public class MemberService {
          * 1. 현재 비밀번호가 올바른가?
          * 2. newPassword.equal(newPasswordAgain) == true 인가?
          */
+        /*비밀번호 수정 과정*/
         if (dto.getPassword() != null && dto.getPasswordCheck() != null &&
                 !dto.getPassword().isEmpty() && !dto.getPasswordCheck().isEmpty()) {
 
@@ -101,11 +103,11 @@ public class MemberService {
 
             /* 2. newPassword.equal(newPasswordAgain) == true 인가? */
             passwordDoubleCheck(dto);
+
+            String encodedPassword = passwordEncoder.encode(dto.getPassword());
+            dto.setPassword(encodedPassword); //비밀번호 인코딩
         }
 
-        String encodedPassword = passwordEncoder.encode(dto.getPassword());
-        dto.setPassword(encodedPassword); //비밀번호 인코딩
-        //dto 구성요소 : id, username, currentPassword, password, passwordCheck
         member.update(dto);
 
         return member;
