@@ -401,7 +401,12 @@
 
 ### 2-2. DB 설계
 
-
+![image](https://github.com/yashin20/the-board/assets/92693776/e15a2cda-900c-4797-8a7a-3cff528f51e9)
+Member - 회원 DB
+Post - 게시글 DB
+Comment - 댓글 DB
+Likes - 회원 ~ 게시글 좋아요 현황
+LikeComment - 회원 ~ 댓글 좋아요 현황
 
 
 ### 2-3. API 설계
@@ -421,8 +426,6 @@
 ## 마무리
 
 ### 1. 프로젝트 보완사항
-
-
 
 
 ### 2. 프로젝트 과정에서 발생한 문제
