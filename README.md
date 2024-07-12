@@ -426,12 +426,20 @@ LikeComment - 회원 ~ 댓글 좋아요 현황
 ## 마무리
 
 ### 1. 프로젝트 보완사항
-
+기존에 제작했던 게시판 프로젝트 에서 새로운 기능을 추가하고, 구현 방식을 조금더 체계적으로 변경한 프로젝트 였다.
+보완점으로는 게시판, 회원, 댓글에 관한 오류 메시지를 조금더 상세하게 사용자에게 보여줘야 한다는 것을 느꼈다.
+서비스를 제공하기 위한 SQL 쿼리 수 최적화에 대한 고민이 더 필요하다는 것을 느꼈다.
+기존에는 기능 자체를 제공하기 위한 것만을 고려 했다면, 앞으로는 최적화된 SQL 쿼리만 요청해야 한다는 것의 필요성을 알게되었다.
 
 ### 2. 프로젝트 과정에서 발생한 문제
 - <a href="https://notorious.tistory.com/353" target="_blank">[The Board - MySQL Error] org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL 해결방법</a>
 
-
 ### 3. 후기
+다음 프로젝트에 고려할 점
+1. Request / Response DTO 내부 클래스로 정의
+2. SQL 쿼리 수 최적화
+3. 효율적인 Thymeleaf 구성
+
+위 3가지를 고려하여, 효율적이고 안정성 있는 프로젝트를 구성해야 한다고 생각했다.
 
 
