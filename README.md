@@ -411,8 +411,9 @@ LikeComment - 회원 ~ 댓글 좋아요 현황
 
 ### 2-3. API 설계
 
-
-  
+![image](https://github.com/user-attachments/assets/8544fd3c-5960-4ddc-9fac-5c7784478dac)
+![image](https://github.com/user-attachments/assets/52c11167-b30f-4d50-b7f2-010bfc3ebb10)
+![image](https://github.com/user-attachments/assets/81f8a5f5-2bdf-4113-ab30-a0de6e4ad093)
 
 
 
